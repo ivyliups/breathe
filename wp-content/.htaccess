@@ -1,0 +1,6 @@
+
+# Htaccess File Editor - Secure backups
+<files htaccess.backup>
+order allow,deny
+deny from all
+</files>

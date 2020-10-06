@@ -1,0 +1,98 @@
+<div id="fifu_meta_box">
+
+    <!-- show alt field, image and link if URL was already provided -->
+
+    <table style="<?php echo $show_ignore ?>">
+        <tr>
+            <th style="width:5px">
+                <input type="checkbox" name="fifu_ignore_auto_set" id="fifu_ignore_auto_set">
+            </th>
+            <th>
+                <label for="fifu_ignore_auto_set" style="font-weight:normal"><?php esc_html_e('ignore URL from Post Content', 'featured-image-from-url'); ?></label>
+            </th>
+        </tr>
+    </table>
+
+    <input id="fifu_input_alt" 
+           type="text" 
+           name="fifu_input_alt" 
+           placeholder="<?php esc_html_e('alt/title attribute (optional)', 'featured-image-from-url'); ?>"
+           value="<?php echo $alt; ?>" 
+           style="<?php echo $width, $show_alt ?>;font-size:13px;" />
+
+    <div id="fifu_image"
+         style="<?php echo $height, $show_image ?> 
+         background:url('<?php echo $url; ?>') no-repeat center center; 
+         background-size:cover;
+         cursor:zoom-in" >
+    </div>
+
+    <table id="fifu_table_url" style="width:103%;position:relative;left:-3px;top:-3px;">
+        <tr>
+            <td style="width:103%">
+                <input id="fifu_input_url" 
+                       type="text" 
+                       name="fifu_input_url" 
+                       placeholder="<?php esc_html_e('Image URL or Keywords', 'featured-image-from-url'); ?>"
+                       value="<?php echo $url; ?>"
+                       style="<?php echo $width ?>;font-size:13px;" />
+            </td>
+            <td>
+                <span id="fifu_help" 
+                      title="<?php esc_html_e('Examples: image URL: https://domain.com/image.jpg; keywords: sea,sun. To get a random image leave this field empty.', 'featured-image-from-url'); ?>"
+                      class="dashicons dashicons-editor-help" 
+                      style="<?php echo $show_button . ';font-size:20px' ?>">
+                </span>
+
+                <span 
+                    id="fifu_next" 
+                    title="<?php esc_html_e('Next'); ?>"
+                    class="dashicons dashicons-arrow-right-alt" 
+                    style="font-size:25px;cursor:pointer;display:none">
+                </span> 
+            </td>
+        </tr>
+    </table>
+
+    <center>
+        <a id="fifu_link" 
+           href="#" 
+           onClick="removeImage();" 
+           style="<?php echo $show_link ?>" ><?php esc_html_e('remove external featured image', 'featured-image-from-url'); ?></a>
+    </center>
+
+    <input 
+        type="hidden" 
+        id="fifu_input_image_width" 
+        name="fifu_input_image_width" 
+        value="" >
+
+    <input 
+        type="hidden" 
+        id="fifu_input_image_height" 
+        name="fifu_input_image_height" 
+        value="" >
+
+    <input 
+        type="hidden" 
+        id="fifu_keywords" 
+        name="fifu_keywords" 
+        value="" >   
+
+    <!-- show preview button if URL was not provided yet -->
+
+    <a id="fifu_button" 
+       class="button" 
+       onClick="previewImage();" 
+       style="<?php echo $align, $margin, $show_button ?>" ><?php esc_html_e('Preview') ?></a>
+
+    <div id="fifu_sirv_button" style="<?php echo 'float:left;padding-right:8px;' . $align, $margin, fifu_is_sirv_active() ? $show_button : 'display:none' ?>">
+        <div class="sirv-modal"></div>
+        <a id="sirv-add-featured-image"
+           data-input-anchor="#fifu_input_url"
+           href="#"
+           class="button sirv-add-image-modal-click"
+           title="<?php esc_html_e('Add image from Sirv', 'featured-image-from-url'); ?>"><?php esc_html_e('Choose Sirv image', 'featured-image-from-url'); ?></a>
+    </div>
+
+</div>
